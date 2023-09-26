@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Black">
+    <option name="enabledOnSave" value="true" />
+    <option name="sdkUUID" value="e007b45a-b49e-41cc-9169-90e74fa6094e" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (economic-data)" project-jdk-type="Python SDK" />
+</project>
