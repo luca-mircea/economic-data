@@ -8,7 +8,6 @@ Premise: Here we'll develop the code for getting exchange
 
 import time
 
-import pandas as pd
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -68,7 +67,7 @@ def get_data_from_website(target_url: str, switch_off_driver: bool = True) -> di
                 try:
                     currency_pair = spans[0].text.strip()
                     exchange_rate_value = spans[1].text.strip()
-                except:
+                except:  # noqa: E722
                     pass
 
             if currency_pair is not None:
