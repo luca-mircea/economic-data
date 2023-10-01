@@ -3,7 +3,7 @@ Exchange rate scraper
 Author: Luca Mircea
 Date started: 24 Sep 2023
 Premise: Here we'll develop the code for getting exchange
-    rate data from the Swiss National Bank website
+    rate data from a few different national bank websites
 """
 
 import time
@@ -15,7 +15,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 
-from snb_exchange_rate_scraper.constants import SNB_MAIN_WEBSITE_URL
+from exchange_rate_scraper.constants import SNB_MAIN_WEBSITE_URL
 
 
 def set_up_driver(url_target_website: str) -> webdriver:
@@ -34,7 +34,7 @@ def set_up_driver(url_target_website: str) -> webdriver:
     return driver
 
 
-def get_data_from_website(target_url: str, switch_off_driver: bool = True) -> dict:
+def get_data_from_snb_website(target_url: str, switch_off_driver: bool = True) -> dict:
     """Here we parse the exchange rates"""
 
     driver = set_up_driver(target_url)
@@ -79,4 +79,4 @@ def get_data_from_website(target_url: str, switch_off_driver: bool = True) -> di
     return snb_rates
 
 
-snb_rates = get_data_from_website(SNB_MAIN_WEBSITE_URL)
+snb_rates = get_data_from_snb_website(SNB_MAIN_WEBSITE_URL)
