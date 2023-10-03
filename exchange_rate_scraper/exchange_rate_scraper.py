@@ -20,8 +20,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 
-from exchange_rate_scraper.constants import (AWS_ACCESS_KEY_ID,  # noqa: E402
-                                             AWS_ACCESS_SECRET_KEY,
+from exchange_rate_scraper.constants import AWS_ACCESS_KEY_ID  # noqa: E402
+from exchange_rate_scraper.constants import (AWS_ACCESS_SECRET_KEY,
                                              AWS_UPLOAD_BUCKET_NAME,
                                              AWS_UPLOAD_TABLE_NAME,
                                              SNB_MAIN_WEBSITE_URL)
@@ -124,12 +124,12 @@ def main():
 
     upload_date = str(datetime.now().date())
 
-    with tempfile.TemporaryFile() as temp_dir:
-        snb_rates_df.to_csv(f"exchange_rates_{upload_date}.csv", index=False)
+    upload_path = f"{AWS_UPLOAD_TABLE_NAME}/date_uploaded={upload_date}"
+    upload_file_name = f"exchange_rates_{upload_date}.csv"
 
-        file_path = os.path.join(temp_dir, f"exchange_rates_{upload_date}.csv")
-        upload_path = f"{AWS_UPLOAD_TABLE_NAME}/date_uploaded={upload_date}"
-        upload_file_name = f"exchange_rates_{upload_date}.csv"
+    with tempfile.TemporaryFile() as temp_dir:  # noqa: F841
+        file_path = os.path.join(os.getcwd(), f"exchange_rates_{upload_date}.csv")
+        snb_rates_df.to_csv(file_path, index=False)
 
         upload_data_to_s3(
             AWS_ACCESS_KEY_ID,
