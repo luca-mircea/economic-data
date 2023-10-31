@@ -6,27 +6,22 @@ Premise: Here we'll develop the code for getting exchange
     rate data from a few different national bank websites
 """
 
+import logging
 import os
 import tempfile
-import logging
 from datetime import datetime
 
-
 import pandas as pd
+import requests
 from boto3 import Session
 from bs4 import BeautifulSoup, ResultSet
 
-from exchange_rate_scraper.constants import (
-    AWS_ACCESS_KEY_ID,
-    AWS_ACCESS_SECRET_KEY,
-    AWS_UPLOAD_BUCKET_NAME,
-    AWS_UPLOAD_TABLE_NAME,
-    SNB_MAIN_WEBSITE_URL,
-    SNB_RATES_TO_KEEP,
-)
-
-
-import requests
+from exchange_rate_scraper.constants import (AWS_ACCESS_KEY_ID,
+                                             AWS_ACCESS_SECRET_KEY,
+                                             AWS_UPLOAD_BUCKET_NAME,
+                                             AWS_UPLOAD_TABLE_NAME,
+                                             SNB_MAIN_WEBSITE_URL,
+                                             SNB_RATES_TO_KEEP)
 
 
 def get_page_source(url_target_website: str) -> str:
