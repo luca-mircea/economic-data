@@ -9,3 +9,5 @@ AWS_UPLOAD_BUCKET_NAME = config["AWS_UPLOAD_BUCKET_NAME"]
 AWS_UPLOAD_TABLE_NAME = "exchange_rate_data"
 
 SNB_MAIN_WEBSITE_URL = "https://www.snb.ch/en/"
+
+SNB_RATES_TO_KEEP = ["EUR / CHF", "USD / CHF", "100 JPY / CHF", "GBP / CHF"]
