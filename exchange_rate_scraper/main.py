@@ -8,6 +8,7 @@ Premise: Here we'll develop the code for getting exchange
 
 import logging
 import os
+import sys
 import tempfile
 from datetime import datetime
 
@@ -16,7 +17,8 @@ import requests
 from boto3 import Session
 from bs4 import BeautifulSoup, ResultSet
 
-from exchange_rate_scraper.constants import (AWS_ACCESS_KEY_ID,
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
+from exchange_rate_scraper.constants import (AWS_ACCESS_KEY_ID,  # noqa: E402
                                              AWS_ACCESS_SECRET_KEY,
                                              AWS_UPLOAD_BUCKET_NAME,
                                              AWS_UPLOAD_TABLE_NAME,
@@ -110,7 +112,7 @@ def upload_data_to_s3(
     s3.Bucket(bucket_name).upload_file(file_to_upload_name, upload_key)
 
 
-def main():
+def get_snb_data():
     snb_rates = get_data_from_snb_website(SNB_MAIN_WEBSITE_URL)
     snb_rates_df = process_rates_dict_into_nice_df(snb_rates)
 
@@ -131,7 +133,3 @@ def main():
             upload_file_name,
             file_path,
         )
-
-
-if __name__ == "__main__":
-    main()
