@@ -74,10 +74,10 @@ COPY . /app/
 RUN python -m venv venv
 # COPY requirements.txt .
 # RUN app/venv/bin/activate
-#RUN pip install setuptools
-#RUN pip install build
-#RUN python -m build
-RUN pip install -r requirements.txt
+RUN pip install setuptools
+RUN pip install build
+RUN python -m build
+#RUN pip install -r requirements.txt
 
 # Switch to the non-privileged user to run the application.
 USER appuser
