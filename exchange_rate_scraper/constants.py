@@ -1,6 +1,6 @@
 from dotenv import dotenv_values
 
-config = dotenv_values("exchange_rate_scraper/.env")
+config = dotenv_values(".env")
 
 AWS_ACCESS_KEY_ID = config["AWS_ACCESS_KEY_ID"]
 AWS_ACCESS_SECRET_KEY = config["AWS_ACCESS_SECRET_KEY"]

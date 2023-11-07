@@ -122,6 +122,9 @@ celerybeat.pid
 # Environments
 .env
 .venv
+vlt_env
+vlt.env
+*.env
 env/
 venv/
 ENV/
@@ -154,6 +157,7 @@ cython_debug/
 
 # Extra
 *.csv
+
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
