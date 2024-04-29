@@ -37,5 +37,4 @@ USER appuser
 COPY . .
 
 # Run the application
-#ENTRYPOINT ["python3.12", "exchange_rate_scraper\main.py"]
 ENTRYPOINT python "exchange_rate_scraper/main.py"
