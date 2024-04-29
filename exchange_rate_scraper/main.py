@@ -18,12 +18,14 @@ from boto3 import Session
 from bs4 import BeautifulSoup, ResultSet
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
-from exchange_rate_scraper.constants import (AWS_ACCESS_KEY_ID,  # noqa: E402
-                                             AWS_ACCESS_SECRET_KEY,
-                                             AWS_UPLOAD_BUCKET_NAME,
-                                             AWS_UPLOAD_TABLE_NAME,
-                                             SNB_MAIN_WEBSITE_URL,
-                                             SNB_RATES_TO_KEEP)
+from constants import AWS_ACCESS_KEY_ID  # noqa: E402
+from constants import (
+    AWS_ACCESS_SECRET_KEY,
+    AWS_UPLOAD_BUCKET_NAME,
+    AWS_UPLOAD_TABLE_NAME,
+    SNB_MAIN_WEBSITE_URL,
+    SNB_RATES_TO_KEEP,
+)
 
 
 def get_page_source(url_target_website: str) -> str:
@@ -133,3 +135,7 @@ def get_snb_data():
             upload_file_name,
             file_path,
         )
+
+
+if __name__ == "__main__":
+    get_snb_data()

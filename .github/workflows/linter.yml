@@ -24,3 +24,6 @@ jobs:
 
       - name: Format with Black
         run: black .
+
+      - name: Format with isort
+        run: isort .
